@@ -36,3 +36,24 @@ model.load_state_dict(checkpoint["state_dict"])
 
 
 print_examples(model, device, dataset)
+
+# # Uncomment the below code for specific single image.
+
+# transform = transforms.Compose(
+#     [
+#         transforms.Resize((299, 299)),
+#         transforms.ToTensor(),
+#         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+#     ]
+# )
+
+# model.eval()
+# # Set the file name to desired test image
+# test_img = transform(Image.open("test_examples/dog.jpg").convert("RGB")).unsqueeze(
+#     0
+# )
+
+# print(
+#     "OUTPUT: "
+#     + " ".join(model.caption_image(test_img.to(device), dataset.vocab))
+# )
